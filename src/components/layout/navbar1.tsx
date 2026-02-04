@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, LogIn } from "lucide-react";
+import { Menu, X, ChevronRight, Home, Users, Info, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -12,11 +12,12 @@ import { Button } from "@/components/ui/button";
 import LogoImg from "../../../public/logo.png";
 import { ModeToggle } from "./ModeToogle";
 
+// Icons সহ মেনু আইটেম
 const menuItems = [
-  { title: "Home", url: "/" },
-  { title: "Tutors", url: "/tutors" },
-  { title: "About", url: "/about" },
-  { title: "Contact", url: "/contact" },
+  { title: "Home", url: "/", icon: Home },
+  { title: "Tutors", url: "/tutors", icon: Users },
+  { title: "About", url: "/about", icon: Info },
+  { title: "Contact", url: "/contact", icon: Mail },
 ];
 
 const Navbar1 = () => {
@@ -37,7 +38,7 @@ const Navbar1 = () => {
           className={cn(
             "w-full max-w-7xl flex items-center justify-between pointer-events-auto transition-all duration-500 rounded-full ",
             isScrolled
-              ? "h-14 mt-2 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-md border border-zinc-200/50"
+              ? "h-14 mt-2 bg-white/80 dark:bg-[#00091a]/80 backdrop-blur-md shadow-md border border-zinc-200/50 dark:border-white/10"
               : "h-20 mt-0 bg-transparent border-transparent"
           )}
         >
@@ -51,29 +52,31 @@ const Navbar1 = () => {
                 alt="Logo"
                 fill
                 priority
-                className=" mt-3" 
+                className="mt-3 object-cover"
               />
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-zinc-100/50 dark:bg-zinc-800 p-1 rounded-full border border-zinc-200/50">
+          <nav className="hidden md:flex items-center gap-1 bg-zinc-100/50 dark:bg-white/5 p-1 rounded-full border border-zinc-200/50 dark:border-white/10">
             {menuItems.map((item) => {
               const isActive = pathname === item.url;
+              const Icon = item.icon;
               return (
                 <Link
                   key={item.title}
                   href={item.url}
                   className={cn(
-                    "px-5 py-1.5 text-sm font-medium transition-all rounded-full relative",
-                    isActive ? "text-zinc-900 dark:text-white" : "text-zinc-500 hover:text-zinc-100"
+                    "px-4 py-1.5 text-sm font-medium transition-all rounded-full relative flex items-center gap-2",
+                    isActive ? "text-zinc-900 dark:text-white" : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
                   )}
                 >
+                  <Icon className={cn("size-4 relative z-10", isActive ? "text-primary" : "text-zinc-400")} />
                   <span className="relative z-10">{item.title}</span>
                   {isActive && (
                     <motion.div
                       layoutId="activeNavHighlight"
-                      className="absolute inset-0 bg-white dark:bg-zinc-900 shadow-sm rounded-full"
+                      className="absolute inset-0 bg-white dark:bg-[#000d26] shadow-sm rounded-full border border-zinc-200/50 dark:border-white/10"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
@@ -84,8 +87,8 @@ const Navbar1 = () => {
 
           {/* Right Actions */}
           <div className="hidden md:flex items-center gap-2">
-            <ModeToggle></ModeToggle>
-            <Button variant="ghost" size="sm" className="text-sm font-semibold rounded-full hover:bg-zinc-100">
+            <ModeToggle />
+            <Button variant="ghost" size="sm" className="text-sm font-semibold rounded-full hover:bg-zinc-100 dark:hover:bg-white/5">
               Login
             </Button>
             <Button size="sm" className="text-sm font-bold rounded-full px-6 bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-lg active:scale-95 transition-transform">
@@ -94,16 +97,16 @@ const Navbar1 = () => {
           </div>
 
           {/* Mobile Toggle */}
-          <button 
-            onClick={() => setIsOpen(true)} 
-            className="md:hidden p-2 bg-white/50 dark:bg-zinc-800/50 rounded-full border border-zinc-200/50"
+          <button
+            onClick={() => setIsOpen(true)}
+            className="md:hidden p-2 bg-white/50 dark:bg-[#00091a] rounded-full border border-zinc-200/50 dark:border-white/10"
           >
             <Menu className="size-5 text-zinc-700 dark:text-zinc-300" />
           </button>
         </header>
       </div>
 
-      {/* Mobile Sidebar with Modern Animation */}
+      {/* Mobile Sidebar */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -112,18 +115,18 @@ const Navbar1 = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/40 dark:bg-transparent backdrop-blur-sm z-[60] md:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] md:hidden"
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 bottom-0 w-[100%] max-w-[400px] bg-white dark:bg-[#00091a] shadow-2xl z-[70] md:hidden flex flex-col"
+              className="fixed right-0 top-0 bottom-0 w-[100%] max-w-[400px] bg-white dark:bg-[#00091a] shadow-2xl z-[70] md:hidden flex flex-col border-l dark:border-white/10"
             >
-              <div className="p-6 flex items-center justify-between border-b border-zinc-100 dark:border-zinc-800">
-               
-                <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-zinc-100 rounded-full transition-colors">
+              <div className="p-6 flex items-center justify-between border-b border-zinc-100 dark:border-white/10">
+                <span className="font-bold text-lg dark:text-white">Menu</span>
+                <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-zinc-100 dark:hover:bg-white/10 rounded-full transition-colors">
                   <X className="size-6 text-zinc-500" />
                 </button>
               </div>
@@ -131,6 +134,7 @@ const Navbar1 = () => {
               <div className="flex flex-col gap-2 p-6 overflow-y-auto">
                 {menuItems.map((item, idx) => {
                   const isActive = pathname === item.url;
+                  const Icon = item.icon;
                   return (
                     <motion.div
                       key={item.title}
@@ -142,21 +146,22 @@ const Navbar1 = () => {
                         href={item.url}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "flex items-center justify-between px-5 py-4 rounded-2xl text-sm font-semibold transition-all",
-                          isActive 
-                            ? "bg-zinc-900 text-white shadow-xl dark:bg-white dark:text-zinc-900" 
-                            : "hover:bg-zinc-100 text-zinc-600 dark:text-zinc-400"
+                          "flex items-center gap-3 px-5 py-4 rounded-2xl text-sm font-semibold transition-all",
+                          isActive
+                            ? "bg-zinc-900 text-white shadow-xl dark:bg-white dark:text-zinc-900"
+                            : "hover:bg-zinc-100 dark:hover:bg-white/5 text-zinc-600 dark:text-zinc-400"
                         )}
                       >
+                        <Icon className="size-5" />
                         {item.title}
-                        <ChevronRight className={cn("size-5 opacity-50", isActive && "opacity-100")} />
+                        <ChevronRight className={cn("ml-auto size-5 opacity-50", isActive && "opacity-100")} />
                       </Link>
                     </motion.div>
                   );
                 })}
               </div>
 
-              <div className=" p-6 space-y-3 bg-zinc-50 dark:bg-zinc-900/50 border-t">
+              <div className="p-6 space-y-3 bg-zinc-50 dark:bg-white/5 border-t dark:border-white/10">
                 <Button variant="outline" className="w-full h-12 rounded-xl text-sm font-bold">
                   Login
                 </Button>
