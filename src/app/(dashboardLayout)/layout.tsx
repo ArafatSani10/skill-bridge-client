@@ -10,7 +10,7 @@ export default function DashboardLayout({
     tutor
 }:
     {
-        // children: React.ReactNode,
+        children: React.ReactNode,
         admin: React.ReactNode,
         student: React.ReactNode,
         tutor: React.ReactNode,
