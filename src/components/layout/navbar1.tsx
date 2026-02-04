@@ -1,179 +1,155 @@
 "use client";
 
-import * as React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, Home, Users, Info, Mail } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { Menu, Home, Info, Mail, User, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-import LogoImg from "../../../public/logo.png";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  // SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 import { ModeToggle } from "./ModeToogle";
 
-// Icons সহ মেনু আইটেম
-const menuItems = [
-  { title: "Home", url: "/", icon: Home },
-  { title: "Tutors", url: "/tutors", icon: Users },
-  { title: "About", url: "/about", icon: Info },
-  { title: "Contact", url: "/contact", icon: Mail },
-];
+import logo from "../../../public/logo.png";
 
 const Navbar1 = () => {
-  const [isScrolled, setIsScrolled] = React.useState(false);
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  React.useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const menu = [
+    { title: "Home", url: "/", icon: Home },
+    { title: "Tutors", url: "/tutors", icon: User },
+    { title: "About", url: "/about", icon: Info },
+    { title: "Contact", url: "/contact", icon: Mail },
+  ];
 
   return (
-    <>
-      <div className="fixed top-0 inset-x-0 z-50 flex justify-center pr-10 pointer-events-none transition-all duration-300">
-        <header
-          className={cn(
-            "w-full max-w-7xl flex items-center justify-between pointer-events-auto transition-all duration-500 rounded-full ",
-            isScrolled
-              ? "h-14 mt-2 bg-white/80 dark:bg-[#00091a]/80 backdrop-blur-md shadow-md border border-zinc-200/50 dark:border-white/10"
-              : "h-20 mt-0 bg-transparent border-transparent"
-          )}
-        >
-          <Link href="/" className="relative flex items-center shrink-0 h-full">
-            <div className={cn(
-              "relative transition-all duration-500 ease-in-out",
-              isScrolled ? "h-28 w-44 -mt-2" : "h-36 w-56 -mt-4"
-            )}>
-              <Image
-                src={LogoImg}
-                alt="Logo"
-                fill
-                priority
-                className="mt-3 object-cover"
-              />
-            </div>
-          </Link>
+    <section className="sticky top-0 z-50 w-full border-b bg-background/95 dark:bg-[#00091a]/95 backdrop-blur-md h-16 flex items-center">
+      <div className="max-w-7xl mx-auto px-4 w-full">
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-zinc-100/50 dark:bg-white/5 p-1 rounded-full border border-zinc-200/50 dark:border-white/10">
-            {menuItems.map((item) => {
-              const isActive = pathname === item.url;
+        {/* --- Desktop & Mobile Wrapper --- */}
+        <div className="flex items-center justify-between h-full relative">
+
+          {/* 1. Left: Logo (Desktop & Mobile) */}
+          <div className="flex-1 flex items-center">
+            <Link href="/" className="relative z-[60] group">
+              <div className="relative h-40 w-60">
+                <Image
+                  src={logo}
+                  alt="Skill Bridge Logo"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              </div>
+            </Link>
+          </div>
+
+          {/* 2. Center: Desktop Navigation */}
+          <nav className="hidden lg:flex justify-center items-center gap-1 bg-muted/50 dark:bg-white/5 p-1 rounded-full border dark:border-white/10">
+            {menu.map((item) => {
               const Icon = item.icon;
+              const isActive = pathname === item.url;
               return (
                 <Link
                   key={item.title}
                   href={item.url}
                   className={cn(
-                    "px-4 py-1.5 text-sm font-medium transition-all rounded-full relative flex items-center gap-2",
-                    isActive ? "text-zinc-900 dark:text-white" : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
+                    "group flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300",
+                    isActive
+                      ? "bg-[#00baff] text-primary-foreground shadow-md"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   )}
                 >
-                  <Icon className={cn("size-4 relative z-10", isActive ? "text-primary" : "text-zinc-400")} />
-                  <span className="relative z-10">{item.title}</span>
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNavHighlight"
-                      className="absolute inset-0 bg-white dark:bg-[#000d26] shadow-sm rounded-full border border-zinc-200/50 dark:border-white/10"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
+                  <Icon className="size-4" />
+                  {item.title}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Right Actions */}
-          <div className="hidden md:flex items-center gap-2">
+          {/* 3. Right: Desktop Actions & Mobile Menu Toggle */}
+          <div className="flex-1 flex justify-end items-center gap-2 sm:gap-3">
+            {/* Theme Toggle (Visible on all screens) */}
             <ModeToggle />
-            <Button variant="ghost" size="sm" className="text-sm font-semibold rounded-full hover:bg-zinc-100 dark:hover:bg-white/5">
-              Login
-            </Button>
-            <Button size="sm" className="text-sm font-bold rounded-full px-6 bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-lg active:scale-95 transition-transform">
-              Get Started
-            </Button>
+
+            {/* Desktop Auth Buttons */}
+            <div className="hidden lg:flex items-center gap-3">
+              <Button asChild variant="ghost" className="rounded-full font-semibold">
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button asChild className="rounded-2xl border px-6 shadow-lg  transition-all active:scale-95">
+                <Link href="/register">Sign up</Link>
+              </Button>
+            </div>
+
+            {/* Mobile Sheet (Menu) Trigger */}
+            <div className="lg:hidden">
+              <Sheet open={open} onOpenChange={setOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="icon" className="rounded-lg border-primary/20">
+                    <Menu className="size-5" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[85%] sm:w-[400px] bg-background dark:bg-[#00091a] p-0 border-l dark:border-white/10">
+
+                  {/* Mobile Menu Header */}
+                  <SheetHeader className="p-6 text-left border-b dark:border-white/10">
+
+                  </SheetHeader>
+
+                  {/* Mobile Navigation Links */}
+                  <div className="flex flex-col h-[calc(100vh-180px)] justify-between p-3">
+                    <div className="flex flex-col gap-3">
+                      {menu.map((item) => {
+                        const isActive = pathname === item.url;
+                        const Icon = item.icon;
+                        return (
+                          <Link
+                            key={item.title}
+                            href={item.url}
+                            onClick={() => setOpen(false)}
+                            className={cn(
+                              "flex items-center justify-between group p-4 rounded-lg transition-all duration-200 border",
+                              isActive
+                                ? "bg-primary text-primary-foreground border-primary shadow-lg"
+                                : "bg-muted/30 dark:bg-white/5 border-transparent text-muted-foreground hover:border-primary/20 hover:text-foreground"
+                            )}
+                          >
+                            <div className="flex items-center gap-4">
+                              <Icon className={cn("size-5", isActive ? "text-primary-foreground" : "text-primary")} />
+                              <span className="font-bold text-sm">{item.title}</span>
+                            </div>
+                            {/* <ChevronRight className={cn("size-5 transition-transform", isActive ? "rotate-90" : "opacity-50")} /> */}
+                          </Link>
+                        );
+                      })}
+                    </div>
+
+                    {/* Mobile Auth Buttons */}
+                    <div className="flex flex-col gap-3">
+                      <Button asChild variant="outline" className="h-14 rounded-lg text-sm font-semibold border-primary/20" onClick={() => setOpen(false)}>
+                        <Link href="/login">Login</Link>
+                      </Button>
+                      <Button asChild className="h-14 rounded-lg text-sm font-semibold bg-[#00baff]" onClick={() => setOpen(false)}>
+                        <Link href="/signup">Sign up</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+
           </div>
-
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setIsOpen(true)}
-            className="md:hidden p-2 bg-white/50 dark:bg-[#00091a] rounded-full border border-zinc-200/50 dark:border-white/10"
-          >
-            <Menu className="size-5 text-zinc-700 dark:text-zinc-300" />
-          </button>
-        </header>
+        </div>
       </div>
-
-      {/* Mobile Sidebar */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] md:hidden"
-            />
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 bottom-0 w-[100%] max-w-[400px] bg-white dark:bg-[#00091a] shadow-2xl z-[70] md:hidden flex flex-col border-l dark:border-white/10"
-            >
-              <div className="p-6 flex items-center justify-between border-b border-zinc-100 dark:border-white/10">
-                <span className="font-bold text-lg dark:text-white">Menu</span>
-                <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-zinc-100 dark:hover:bg-white/10 rounded-full transition-colors">
-                  <X className="size-6 text-zinc-500" />
-                </button>
-              </div>
-
-              <div className="flex flex-col gap-2 p-6 overflow-y-auto">
-                {menuItems.map((item, idx) => {
-                  const isActive = pathname === item.url;
-                  const Icon = item.icon;
-                  return (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + idx * 0.05 }}
-                    >
-                      <Link
-                        href={item.url}
-                        onClick={() => setIsOpen(false)}
-                        className={cn(
-                          "flex items-center gap-3 px-5 py-4 rounded-2xl text-sm font-semibold transition-all",
-                          isActive
-                            ? "bg-zinc-900 text-white shadow-xl dark:bg-white dark:text-zinc-900"
-                            : "hover:bg-zinc-100 dark:hover:bg-white/5 text-zinc-600 dark:text-zinc-400"
-                        )}
-                      >
-                        <Icon className="size-5" />
-                        {item.title}
-                        <ChevronRight className={cn("ml-auto size-5 opacity-50", isActive && "opacity-100")} />
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-              <div className="p-6 space-y-3 bg-zinc-50 dark:bg-white/5 border-t dark:border-white/10">
-                <Button variant="outline" className="w-full h-12 rounded-xl text-sm font-bold">
-                  Login
-                </Button>
-                <Button className="w-full h-12 rounded-xl text-sm font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-xl">
-                  Get Started Free
-                </Button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+    </section>
   );
 };
 
