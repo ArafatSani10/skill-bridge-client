@@ -3,7 +3,22 @@ import { ModeToggle } from "@/components/layout/ModeToogle";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Bell } from "lucide-react";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+    // children,
+    admin,
+    student,
+    tutor
+}:
+    {
+        // children: React.ReactNode,
+        admin: React.ReactNode,
+        student: React.ReactNode,
+        tutor: React.ReactNode,
+    }) {
+
+    const userInfo = {
+        role: "admin"
+    }
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -34,7 +49,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 </header>
 
                 <main className="p-8">
-                    {children}
+                    {/* {admin}
+                    {student}
+                    {tutor} */}
+
+                    {
+                        userInfo.role === "admin"
+                            ? admin
+                            : userInfo.role === "student"
+                                ? student
+                                : tutor
+                    }
+
                 </main>
             </SidebarInset>
         </SidebarProvider>

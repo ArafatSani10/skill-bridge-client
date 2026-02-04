@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils"
 import logo from "../../../public/logo.png"
 
 const routes = [
-  { title: "Dashboard", url: "/admin/dashboard", icon: LayoutDashboard },
+  { title: "Dashboard", url: "/admin-dashboard", icon: LayoutDashboard },
   { title: "Tutors", url: "/admin/tutors", icon: GraduationCap },
   { title: "Students List", url: "/admin/students", icon: Users },
   { title: "Bookings", url: "/admin/bookings", icon: CalendarCheck },
@@ -38,9 +38,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const isCollapsed = state === "collapsed"
 
   return (
-    <Sidebar 
-      collapsible="icon" 
-      className="border-r border-zinc-100 dark:border-white/5 bg-[#F9FAFB] dark:bg-[#020817]" 
+    <Sidebar
+      collapsible="icon"
+      className="border-r border-zinc-100 dark:border-white/5 bg-[#F9FAFB] dark:bg-[#020817]"
       {...props}
     >
       {/* --- Logo Section: Space Fixed --- */}
@@ -75,8 +75,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     tooltip={item.title}
                     className={cn(
                       "h-10 px-3 rounded-lg transition-all duration-300 group",
-                      isActive 
-                        ? "bg-white dark:bg-white/5 text-foreground shadow-sm border border-zinc-200/50 dark:border-white/5" 
+                      isActive
+                        ? "bg-white dark:bg-white/5 text-foreground shadow-sm border border-zinc-200/50 dark:border-white/5"
                         : "text-zinc-500 hover:text-[#00baff] hover:bg-zinc-200/40 dark:hover:bg-white/5"
                     )}
                   >
