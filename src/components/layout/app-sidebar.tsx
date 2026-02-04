@@ -21,7 +21,6 @@ import {
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
 
-// রুটগুলো ইমপোর্ট করুন (আপনার পাথ অনুযায়ী ঠিক করে নিন)
 
 
 import logo from "../../../public/logo.png"
@@ -30,7 +29,7 @@ import { studentRoutes } from "@/routes/student-routes"
 import { tutorRoutes } from "@/routes/tutor-routes"
 
 export function AppSidebar({
-  user = { role: "tutor" }, // ডিফল্ট হিসেবে এডমিন রাখা হয়েছে
+  user = { role: "student" }, 
   ...props
 }: { user?: { role: string } } & React.ComponentProps<typeof Sidebar>) {
 
