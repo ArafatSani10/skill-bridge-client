@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useState } from "react";
 import { Menu, Home, Info, Mail, User, X } from "lucide-react";
@@ -38,7 +38,8 @@ const Navbar1 = () => {
 
           {/* 1. Left: Logo (Desktop & Mobile) */}
           <div className="flex-1 flex items-center">
-            <Link href="/" className="relative z-[60] group">
+            <Link href="/" className="relative z-60
+ group">
               <div className="relative h-40 w-60">
                 <Image
                   src={logo}
@@ -97,7 +98,7 @@ const Navbar1 = () => {
                     <Menu className="size-5" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[85%] sm:w-[400px] bg-background dark:bg-[#00091a] p-0 border-l dark:border-white/10">
+                <SheetContent side="right" className="w-[85%]  bg-background dark:bg-[#00091a] p-0 border-l dark:border-white/10">
 
                   {/* Mobile Menu Header */}
                   <SheetHeader className="p-6 text-left border-b dark:border-white/10">
