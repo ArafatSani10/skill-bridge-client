@@ -68,7 +68,7 @@ export function SignupForm() {
           email: value.email,
           password: value.password,
           image: imageUrl, 
-          callbackURL: "/dashboard", 
+          callbackURL: "/login", 
         });
 
         if (error) {
