@@ -1,4 +1,5 @@
 import { Navbar1 } from '@/components/layout/navbar1'
+import { Toaster } from '@/components/ui/sonner'
 import React from 'react'
 
 export default function CommonLayout({ children }: { children: React.ReactNode }) {
@@ -7,7 +8,8 @@ export default function CommonLayout({ children }: { children: React.ReactNode }
       <Navbar1 />
       <main className="flex-1">
         {children}
+        <Toaster richColors></Toaster>
       </main>
-    </div>
+    </div> 
   )
 }
