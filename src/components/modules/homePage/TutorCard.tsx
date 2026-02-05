@@ -6,14 +6,14 @@ import Link from "next/link";
 
 export default function TutorCard({ tutor }: { tutor: any }) {
     const name = tutor?.user?.name || "Professional Tutor";
-    const image = tutor?.user?.image || "https://images.unsplash.com/photo-1544717297-f1e3eec99665";
+    const image = tutor?.user?.image || "https://plus.unsplash.com/premium_photo-1738980401922-70995a1b6ade?q=80&w=1267&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
     const subject = tutor?.categories?.[0]?.name || "Expert Mentor";
     const rating = tutor?.averageRating || 0;
     const price = tutor?.pricePerHour || 0;
     const experience = tutor?.experience || 0;
 
     return (
-        <Card className="group overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-md rounded-xl transition-all duration-300 shadow-none hover:border-zinc-400 dark:hover:border-zinc-600">
+        <Card className="group overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-transparent backdrop-blur-md rounded-xl transition-all duration-300 shadow-none hover:border-zinc-400 dark:hover:border-zinc-600">
             {/* Image Section - Fixed Aspect Ratio */}
             <div className="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-900 overflow-hidden">
                 <Image
