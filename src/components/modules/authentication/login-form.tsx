@@ -14,7 +14,6 @@ import { authClient } from "@/lib/auth-client"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 
-// ১. Login Schema (শুধুমাত্র Email ও Password)
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(1, "Password is required"),
@@ -39,11 +38,10 @@ console.log("Current User:", session?.user);
       try {
         setIsSubmitting(true)
 
-        // ২. Better Auth SignIn Method
         const { data, error } = await authClient.signIn.email({
           email: value.email,
           password: value.password,
-          callbackURL: "/dashboard", // সফল হলে যেখানে যাবে
+          callbackURL: "/dashboard", 
         })
 
         if (error) {
@@ -143,7 +141,6 @@ console.log("Current User:", session?.user);
   )
 }
 
-// ৩. এরর মেসেজ কম্পোনেন্ট
 function FieldError({ errors }: { errors: any[] }) {
   if (!errors.length) return null
 
