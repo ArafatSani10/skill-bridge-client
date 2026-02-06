@@ -87,13 +87,13 @@ export default function UpdateTutorProfile() {
   }
 
   return (
-    <div className="max-w-7xl py-10 px-6">
+    <div className="max-w-7xl md:py-10 md:px-6">
       {/* Header Section */}
       <div className="flex items-center justify-between mb-10">
         <div className="space-y-1">
           <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
             <Settings2 className="size-5 text-zinc-400" />
-            Tutor Profile Settings
+             Create Tutor Profile 
           </h1>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
             Manage your professional details and student-facing information.

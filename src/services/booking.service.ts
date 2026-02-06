@@ -11,7 +11,7 @@ export const bookingService = {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    
+
                 },
                 credentials: "include",
                 body: JSON.stringify(payload),
@@ -41,7 +41,7 @@ export const bookingService = {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                credentials: "include", 
+                credentials: "include",
             });
 
             const result = await res.json();
@@ -55,5 +55,21 @@ export const bookingService = {
             console.error("Fetch Bookings Error:", error);
             return { success: false, message: error.message };
         }
-    }
+    },
+
+
+    updateBookingStatus: async function (bookingId: string, status: string) {
+        try {
+            const res = await fetch(`${API_URL}/api/bookings/${bookingId}/status`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ status }),
+                credentials: "include",
+            });
+
+            return await res.json();
+        } catch (error) {
+            return { success: false, message: "Network error" };
+        }
+    },
 };
