@@ -47,7 +47,7 @@ export default function TutorFilters({ categories }: { categories: any[] }) {
   };
 
   return (
-    <div className="bg-white dark:bg-transparent border border-zinc-200 dark:border-zinc-800 rounded-lg sticky top-24 overflow-hidden">
+    <div className="bg-white dark:bg-transparent border border-zinc-200 dark:border-zinc-800 rounded-lg  top-24 overflow-hidden">
       {/* Header Area */}
       <div className="px-5 py-4 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between bg-zinc-50/50 dark:bg-transparent">
         <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100">

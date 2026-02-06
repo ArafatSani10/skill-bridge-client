@@ -3,6 +3,8 @@ import TutorCard from "@/components/modules/homePage/TutorCard";
 import { tutorService } from "@/services/tutor.service";
 import { categoryService } from "@/services/category.service";
 import CategoryCard from "@/components/modules/homePage/CategoryCard";
+import HowItWorks from "@/components/modules/homePage/HowItWorks";
+import Testimonials from "@/components/modules/homePage/Testimonials";
 
 export default async function Home() {
   const [tutors, categories] = await Promise.all([
@@ -10,10 +12,14 @@ export default async function Home() {
     categoryService.getAllCategories()
   ]);
 
+  const allReviews = tutors
+    ?.flatMap((tutor: any) => tutor.reviews || [])
+    .slice(0, 10);
+
   return (
     <main className="">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <Banner />
+        <Banner categories={categories} />
 
         <section className="mt-16">
           <div className="mb-8">
@@ -50,6 +56,17 @@ export default async function Home() {
             )}
           </div>
         </section>
+
+        <section>
+          <HowItWorks></HowItWorks>
+        </section>
+
+
+        {allReviews && allReviews.length > 0 && (
+          <section className="mt-5">
+            <Testimonials reviews={allReviews} />
+          </section>
+        )}
 
 
 
