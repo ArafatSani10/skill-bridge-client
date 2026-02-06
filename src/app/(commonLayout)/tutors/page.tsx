@@ -10,7 +10,7 @@ export default async function TutorPage({
 }) {
   const filters = await searchParams;
   const tutors = await tutorService.getAllTutor(filters);
-  const categories = await categoryService.getAllCategories(); 
+  const categories = await categoryService.getAllCategories();
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">

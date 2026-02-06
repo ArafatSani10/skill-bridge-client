@@ -14,14 +14,14 @@ export const studentRoutes = [
     {
         title: "Menu",
         item: [
-            { title: "Dashboard", url: "/student/dashboard", icon: LayoutDashboard },
+            { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
             { title: "Find Tutors", url: "/tutors", icon: Search },
         ],
     },
     {
         title: "My Learning",
         item: [
-            { title: "My Bookings", url: "/student/bookings", icon: CalendarClock },
+            { title: "My Bookings", url: "/my-bookings", icon: CalendarClock },
             { title: "My Lessons", url: "/student/lessons", icon: BookOpen },
             { title: "Favorite Tutors", url: "/student/favorites", icon: Star },
         ],

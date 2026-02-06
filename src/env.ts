@@ -11,6 +11,8 @@ export const env = createEnv({
     client: {
         NEXT_PUBLIC_TEST: z.string(),
         NEXT_PUBLIC_IMGBB_API_KEY: z.string().min(1),
+        // এখানে যোগ করুন 👇
+        NEXT_PUBLIC_API_URL: z.string().url(), 
     },
     runtimeEnv: {
         BACKEND_API: process.env.BACKEND_API,
@@ -18,6 +20,8 @@ export const env = createEnv({
         API_URL: process.env.API_URL,
         AUTH_URL: process.env.AUTH_URL,
         NEXT_PUBLIC_TEST: process.env.NEXT_PUBLIC_TEST,
-        NEXT_PUBLIC_IMGBB_API_KEY: process.env.NEXT_PUBLIC_IMGBB_API_KEY
+        NEXT_PUBLIC_IMGBB_API_KEY: process.env.NEXT_PUBLIC_IMGBB_API_KEY,
+        // এখানেও যোগ করুন 👇
+        NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     }
 })
