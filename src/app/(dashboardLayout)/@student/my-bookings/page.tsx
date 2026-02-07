@@ -51,11 +51,10 @@ const StudentBookingCard = ({ booking }: { booking: any }) => {
             </div>
 
             <div className="mt-6 pt-5 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
-                <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${
-                    status === "CONFIRMED"
+                <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${status === "CONFIRMED"
                         ? "bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10"
                         : "bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-500/10"
-                }`}>
+                    }`}>
                     • {status}
                 </span>
 

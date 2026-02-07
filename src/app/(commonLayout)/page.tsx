@@ -1,3 +1,6 @@
+
+
+
 import Banner from "@/components/modules/homePage/Banner";
 import TutorCard from "@/components/modules/homePage/TutorCard";
 import { tutorService } from "@/services/tutor.service";
@@ -13,7 +16,11 @@ export default async function Home() {
   ]);
 
   const allReviews = tutors
-    ?.flatMap((tutor: any) => tutor.reviews || [])
+    ?.flatMap((tutor: any) => (tutor.reviews || []).map((rev: any) => ({
+      ...rev,
+      student: rev.student || null
+    })))
+    .filter((rev: any) => rev.student)
     .slice(0, 10);
 
   return (
@@ -31,12 +38,11 @@ export default async function Home() {
           <CategoryCard categories={categories} />
         </section>
 
-        {/* Tutor section */}
         <section className="mt-14">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
             <div>
               <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">
-                Find Your Perfect  <span className="text-[#00baff]">Tutor</span>
+                Find Your Perfect <span className="text-[#00baff]">Tutor</span>
               </h2>
               <p className="mt-2 text-zinc-500 dark:text-zinc-400">
                 Learn faster with verified and experienced tutors
@@ -58,18 +64,14 @@ export default async function Home() {
         </section>
 
         <section>
-          <HowItWorks></HowItWorks>
+          <HowItWorks />
         </section>
-
 
         {allReviews && allReviews.length > 0 && (
           <section className="mt-5">
             <Testimonials reviews={allReviews} />
           </section>
         )}
-
-
-
       </div>
     </main>
   );
