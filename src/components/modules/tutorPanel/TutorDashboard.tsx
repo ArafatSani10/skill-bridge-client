@@ -57,7 +57,7 @@ export default function TutorDashboard() {
   ];
 
   return (
-    <div className="p-3 lg:p-4  space-y-10 animate-in fade-in duration-500">
+    <div className="  space-y-10 animate-in fade-in duration-500">
       <header className="flex items-center gap-3">
         <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
           <LayoutDashboard className="size-5 text-zinc-500" />

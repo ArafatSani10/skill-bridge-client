@@ -29,7 +29,7 @@ export const tutorRoutes = [
     {
         title: "Students Feedbacks",
         item: [
-            { title: "Reviews", url: "/tutor/reviews", icon: Star },
+            { title: "Reviews", url: "/tutor-reviews", icon: Star },
         ],
     },
 

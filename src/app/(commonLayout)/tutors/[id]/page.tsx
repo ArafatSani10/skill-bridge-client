@@ -100,15 +100,15 @@ export default async function TutorDetailsPage({ params }: PageProps) {
 
             <section className="space-y-6">
               <div className="flex items-center gap-2">
-                <h2 className="text-sm font-bold text-zinc-400 uppercase tracking-widest">Student Feedback</h2>
+                <h2 className="text-lg font-bold text-zinc-400 ">Student Feedback</h2>
                 <div className="h-px flex-1 bg-zinc-100 dark:bg-zinc-800"></div>
                 <span className="text-xs font-bold text-zinc-400">({tutor.reviews?.length || 0})</span>
               </div>
               <div className="grid gap-4">
                 {tutor.reviews?.length > 0 ? (
                   tutor.reviews.map((review: any) => (
-                    <div key={review.id} className="p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-950/40 flex gap-4 transition-all hover:border-zinc-200">
-                      <div className="relative size-12 shrink-0 rounded-xl overflow-hidden bg-zinc-100 border border-zinc-200 dark:border-zinc-800">
+                    <div key={review.id} className="p-5 rounded-sm border border-zinc-100 dark:border-zinc-800 bg-white dark:bg-transparent flex gap-4 transition-all hover:border-zinc-200">
+                      <div className="relative size-12 shrink-0 rounded-sm overflow-hidden bg-zinc-100 border border-zinc-200 dark:border-zinc-800">
                         <Image
                           src={review.student?.image || "https://avatar.iran.liara.run/public"}
                           alt="Student"
@@ -144,16 +144,16 @@ export default async function TutorDetailsPage({ params }: PageProps) {
           </div>
 
           <div className="col-span-12 lg:col-span-4">
-            <div className="sticky top-24 space-y-4">
-              <Card className="border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden">
-                <div className="bg-zinc-50/50 dark:bg-zinc-900/50 px-6 py-3 border-b border-zinc-100 dark:border-zinc-800">
-                  <p className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest">Rate Information</p>
+            <div className=" top-24 space-y-4">
+              <Card className="border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-sm bg-white dark:bg-transparent overflow-hidden">
+                <div className="bg-zinc-50/50 dark:bg-transparent px-6 py-3 border-b border-zinc-100 dark:border-zinc-800">
+                  <p className="text-lg font-bold text-zinc-400 ">Rate Information</p>
                 </div>
                 <CardContent className="p-4">
                   <BookingSection tutorId={tutor.id} slots={uniqueSlots} price={tutor.pricePerHour} />
                 </CardContent>
               </Card>
-              <button className="w-full flex items-center justify-center gap-2 p-4 border border-zinc-200 dark:border-zinc-800 rounded-2xl text-xs font-bold hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all">
+              <button className="w-full flex items-center justify-center gap-2 p-4 border border-zinc-200 dark:border-zinc-800 rounded-sm text-xs font-bold hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all">
                 <MessageSquare className="size-4" /> Message {tutor.user?.name.split(' ')[0]}
               </button>
             </div>

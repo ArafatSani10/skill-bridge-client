@@ -74,10 +74,10 @@ export default function MyStudents() {
   }
 
   return (
-    <div className="max-w-7xl py-10 px-6">
+    <div className="">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+          <h1 className="text-xl font-semibold  text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
             <GraduationCap className="size-6 text-zinc-500" />
             My Students
           </h1>
@@ -96,15 +96,15 @@ export default function MyStudents() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-transparent border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden shadow-sm text-zinc-400">
+      <div className="bg-white dark:bg-transparent border border-zinc-200 dark:border-zinc-800 rounded-sm overflow-hidden shadow-sm text-zinc-400">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-zinc-50/50 dark:bg-zinc-900/40 border-b border-zinc-100 dark:border-zinc-800">
-                <th className="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-zinc-500">Student Info</th>
-                <th className="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-zinc-500">Status</th>
-                <th className="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-zinc-500">Enrollment Date</th>
-                <th className="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-zinc-500 text-right">Actions</th>
+                <th className="px-6 py-4 text-[11px] font-bold  text-zinc-500">Student Info</th>
+                <th className="px-6 py-4 text-[11px] font-bold  text-zinc-500">Status</th>
+                <th className="px-6 py-4 text-[11px] font-bold  text-zinc-500">Enrollment Date</th>
+                <th className="px-6 py-4 text-[11px] font-bold  text-zinc-500 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">

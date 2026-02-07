@@ -53,20 +53,20 @@ export default function ReviewSection({ tutorId, bookingId, onSuccess }: ReviewP
   };
 
   return (
-    <div className="font-sans w-full p-8 rounded-[2rem] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 shadow-sm">
+    <div className="font-sans w-full p-5 rounded-sm border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-transparent shadow-sm">
       <div className="flex items-center gap-3 mb-8">
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+        <div className="p-3 rounded-sm bg-zinc-100 dark:bg-transparent text-zinc-600 dark:text-zinc-400">
           <MessageSquareQuote className="size-6" />
         </div>
         <div>
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">Leave a Review</h2>
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">Add a Review</h2>
           <p className="text-zinc-500 text-sm font-medium">Share your experience with this mentor</p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-100 dark:border-zinc-800/50">
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-4">Tap to Rate</span>
+        <div className="flex flex-col items-center justify-center p-6 rounded-sm bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-100 dark:border-zinc-800/50">
+          <span className="text-lg font-bold  text-zinc-400 mb-4">Tap to Rate</span>
           <div className="flex gap-2">
             {[1, 2, 3, 4, 5].map((star) => (
               <button
@@ -79,8 +79,8 @@ export default function ReviewSection({ tutorId, bookingId, onSuccess }: ReviewP
               >
                 <Star
                   className={`size-8 ${(hover || rating) >= star
-                      ? "fill-orange-400 text-orange-400"
-                      : "text-zinc-200 dark:text-zinc-800"
+                    ? "fill-orange-400 text-orange-400"
+                    : "text-zinc-200 dark:text-zinc-800"
                     }`}
                 />
               </button>
@@ -93,7 +93,7 @@ export default function ReviewSection({ tutorId, bookingId, onSuccess }: ReviewP
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="Write your feedback here..."
-            className="w-full min-h-[120px] p-5 rounded-2xl bg-transparent border border-zinc-200 dark:border-zinc-800 focus:ring-2 focus:ring-zinc-500/10 focus:border-zinc-400 outline-none transition-all text-zinc-800 dark:text-zinc-200 text-sm placeholder:text-zinc-400"
+            className="w-full min-h-[120px] p-5 rounded-sm bg-transparent border border-zinc-200 dark:border-zinc-800 focus:ring-2 focus:ring-zinc-500/10 focus:border-zinc-400 outline-none transition-all text-zinc-800 dark:text-zinc-200 text-sm placeholder:text-zinc-400"
             required
           />
         </div>
@@ -101,7 +101,7 @@ export default function ReviewSection({ tutorId, bookingId, onSuccess }: ReviewP
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-4 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-50 transition-all"
+          className="w-full py-4 rounded-sm bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-50 transition-all"
         >
           {isSubmitting ? (
             <Loader2 className="size-5 animate-spin" />

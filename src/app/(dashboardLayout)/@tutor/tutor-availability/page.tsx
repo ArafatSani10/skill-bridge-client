@@ -118,10 +118,10 @@ export default function Availability() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-10 px-6">
+    <div className="max-w-full mx-auto ">
       <div className="flex items-center justify-between mb-10">
         <div className="space-y-1">
-          <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+          <h1 className="text-xl font-semibold  text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
             <Settings2 className="size-5 text-zinc-400" />
             Availability Manager
           </h1>
@@ -129,7 +129,7 @@ export default function Availability() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-transparent border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-sm">
+      <div className="bg-white dark:bg-transparent border border-zinc-200 dark:border-zinc-800 rounded-sm shadow-sm">
         <form onSubmit={(e) => { e.preventDefault(); e.stopPropagation(); form.handleSubmit(); }}>
           <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
             {DAYS.map((day, index) => (

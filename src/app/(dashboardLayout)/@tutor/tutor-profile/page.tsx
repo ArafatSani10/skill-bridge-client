@@ -87,7 +87,7 @@ export default function UpdateTutorProfile() {
   }
 
   return (
-    <div className="max-w-7xl md:py-10 md:px-6">
+    <div className="max-w-full">
       {/* Header Section */}
       <div className="flex items-center justify-between mb-10">
         <div className="space-y-1">
