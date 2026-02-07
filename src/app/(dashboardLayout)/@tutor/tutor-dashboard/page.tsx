@@ -1,7 +1,10 @@
+import TutorDashboard from '@/components/modules/tutorPanel/TutorDashboard'
 import React from 'react'
 
-export default function TutorDashboard() {
+export default function page() {
   return (
-    <div>TutorDashboard</div>
+    <div>
+      <TutorDashboard></TutorDashboard>
+    </div>
   )
 }

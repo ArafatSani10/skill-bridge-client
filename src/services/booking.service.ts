@@ -42,6 +42,8 @@ export const bookingService = {
                     "Content-Type": "application/json",
                 },
                 credentials: "include",
+                cache: "no-store", 
+                next: { revalidate: 0 } 
             });
 
             const result = await res.json();

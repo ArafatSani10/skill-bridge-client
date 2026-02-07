@@ -26,24 +26,37 @@ export default function BookingSection({ tutorId, slots: initialSlots, price }: 
     }
 
     setLoading(true);
-    const res = await bookingService.createBooking({ tutorId, slotId: selectedSlot });
 
-    if (res.success) {
-      toast.success("Booking confirmed successfully!");
-      
-      setSlots((prev) =>
-        prev.map((s) => (s.id === selectedSlot ? { ...s, isBooked: true } : s))
-      );
-      setSelectedSlot(null);
+    try {
+      const res = await bookingService.createBooking({ tutorId, slotId: selectedSlot });
 
-      setTimeout(() => {
-        router.push("/dashboard");
-        router.refresh();
-      }, 1500);
-    } else {
-      toast.error(res.message || "Something went wrong");
+      if (res.success) {
+        toast.success("Booking confirmed successfully!");
+
+        setSlots((prev) =>
+          prev.map((s) => (s.id === selectedSlot ? { ...s, isBooked: true } : s))
+        );
+        setSelectedSlot(null);
+
+        setTimeout(() => {
+          router.push("/dashboard");
+          router.refresh();
+        }, 1500);
+      } else {
+        toast.error(res.message || "This slot is already taken. Please choose another one.");
+
+        if (res.message?.includes("slotId")) {
+          setSlots((prev) =>
+            prev.map((s) => (s.id === selectedSlot ? { ...s, isBooked: true } : s))
+          );
+          setSelectedSlot(null);
+        }
+      }
+    } catch (error) {
+      toast.error("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -55,15 +68,15 @@ export default function BookingSection({ tutorId, slots: initialSlots, price }: 
 
       <div className="space-y-3 mb-6">
         <div className="flex items-center gap-3 text-[13px] text-zinc-600 dark:text-zinc-400">
-          <Video className="size-4 text-zinc-400" /> 
+          <Video className="size-4 text-zinc-400" />
           <span className="font-medium">1-on-1 Online Class</span>
         </div>
         <div className="flex items-center gap-3 text-[13px] text-zinc-600 dark:text-zinc-400">
-          <BookOpen className="size-4 text-zinc-400" /> 
+          <BookOpen className="size-4 text-zinc-400" />
           <span className="font-medium">Custom Study Plan</span>
         </div>
         <div className="flex items-center gap-3 text-[13px] text-zinc-600 dark:text-zinc-400">
-          <Clock className="size-4 text-zinc-400" /> 
+          <Clock className="size-4 text-zinc-400" />
           <span className="font-medium">60 Min Duration</span>
         </div>
       </div>
@@ -81,13 +94,14 @@ export default function BookingSection({ tutorId, slots: initialSlots, price }: 
             slots.map((slot) => (
               <button
                 key={slot.id}
+                type="button"
                 disabled={slot.isBooked || loading}
                 onClick={() => setSelectedSlot(slot.id)}
                 className={`p-2 text-[11px] font-semibold border rounded transition-all 
-                  ${slot.isBooked 
-                    ? "bg-zinc-50 text-zinc-300 border-zinc-100 cursor-not-allowed" 
-                    : selectedSlot === slot.id 
-                      ? "border-blue-500 bg-blue-50 text-blue-600 dark:bg-blue-900/20" 
+                  ${slot.isBooked
+                    ? "bg-zinc-50 text-zinc-300 border-zinc-100 cursor-not-allowed"
+                    : selectedSlot === slot.id
+                      ? "border-blue-500 bg-blue-50 text-blue-600 dark:bg-blue-900/20 shadow-sm"
                       : "border-zinc-200 dark:border-zinc-800 hover:border-blue-500 hover:text-blue-500"
                   }`}
               >
