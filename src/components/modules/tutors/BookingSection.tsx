@@ -83,7 +83,7 @@ export default function BookingSection({ tutorId, slots: initialSlots, price }: 
 
       <div className="space-y-3 border-t border-zinc-100 dark:border-zinc-800 pt-6 mb-6">
         <div className="flex items-center justify-between mb-2">
-          <p className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest">Available Slots</p>
+          <p className="text-[11px] font-bold text-zinc-400 ">Available Slots</p>
           {slots.some(s => !s.isBooked) && (
             <span className="size-2 bg-emerald-500 rounded-full animate-pulse" />
           )}

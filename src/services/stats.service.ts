@@ -14,5 +14,20 @@ export const statsService = {
             console.error("Fetch Error:", error);
             return null;
         }
+    },
+
+    getStudentStats: async function () {
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stats/student-stats`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                cache: 'no-store'
+            });
+            return await res.json();
+        } catch (error) {
+            console.error("Fetch Error:", error);
+            return null;
+        }
     }
 };

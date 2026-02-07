@@ -74,7 +74,7 @@ const Navbar1 = () => {
           </div>
 
           {/* 2. Center: Desktop Navigation */}
-          <nav className="hidden lg:flex justify-center items-center gap-1 bg-muted/50 dark:bg-white/5 p-1 rounded-full border dark:border-white/10">
+          <nav className="hidden lg:flex justify-center items-center gap-1 bg-muted/50 dark:bg-white/5 p-1 rounded-md border dark:border-white/10">
             {menu.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.url;
@@ -83,7 +83,7 @@ const Navbar1 = () => {
                   key={item.title}
                   href={item.url}
                   className={cn(
-                    "group flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300",
+                    "group flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-300",
                     isActive
                       ? "bg-[#00baff] text-white shadow-md"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"

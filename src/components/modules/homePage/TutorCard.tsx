@@ -13,9 +13,9 @@ export default function TutorCard({ tutor }: { tutor: any }) {
     const experience = tutor?.experience || 0;
 
     return (
-        <Card className="group overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-transparent backdrop-blur-md rounded-xl transition-all duration-300 shadow-none hover:border-zinc-400 dark:hover:border-zinc-600">
+        <Card className="group overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-transparent backdrop-blur-md rounded-sm transition-all duration-300 shadow-none hover:border-zinc-400 dark:hover:border-zinc-600">
             {/* Image Section - Fixed Aspect Ratio */}
-            <div className="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-900 overflow-hidden">
+            <div className="relative aspect-[16/10] w-full bg-zinc-100 -mt-6 dark:bg-zinc-900 overflow-hidden">
                 <Image
                     src={image}
                     alt={name}
@@ -55,7 +55,7 @@ export default function TutorCard({ tutor }: { tutor: any }) {
                 {/* Pricing & Call to Action */}
                 <div className="flex items-center justify-between pt-4 border-t border-zinc-200/50 dark:border-zinc-800/50">
                     <div className="flex flex-col">
-                        <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Rate</span>
+                        <span className="text-[10px] font-bold text-zinc-400  ">Rate</span>
                         <div className="flex items-baseline gap-1">
                             <span className="text-lg font-bold text-zinc-900 dark:text-zinc-100">৳{price}</span>
                             <span className="text-[11px] font-medium text-zinc-500">/hr</span>

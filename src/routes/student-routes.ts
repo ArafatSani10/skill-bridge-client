@@ -28,7 +28,7 @@ export const studentRoutes = [
     {
         title: "Account",
         item: [
-            { title: "My Profile", url: "/student/profile", icon: UserCircle },
+            { title: "My Profile", url: "/student-profile", icon: UserCircle },
         ],
     },
 ];

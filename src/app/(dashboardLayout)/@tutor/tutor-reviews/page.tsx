@@ -46,7 +46,7 @@ export default function TutorReviews() {
         return (
             <div className="flex flex-col items-center justify-center p-12 border border-zinc-200 dark:border-zinc-800 rounded-sm bg-transparent text-center">
                 <MessageSquare className="size-6 text-zinc-400 mb-3" />
-                <h3 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">No Records Found</h3>
+                <h3 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 ">No Records Found</h3>
                 <p className="text-zinc-500 text-[11px] mt-1">Review log is currently empty.</p>
             </div>
         );

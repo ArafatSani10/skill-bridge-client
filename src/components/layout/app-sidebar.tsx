@@ -100,7 +100,7 @@ import {
   SidebarMenuItem, 
   SidebarGroup, 
   SidebarGroupLabel,
-  useSidebar // এই ইম্পোর্টটা মিস হয়েছিল
+  useSidebar 
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
 
@@ -136,7 +136,7 @@ export function AppSidebar({ user, ...props }: { user?: any } & React.ComponentP
         {selectedRoutes.map((group: any, index: number) => (
           <SidebarGroup key={index} className="mb-4">
             {!isCollapsed && group.title && (
-              <SidebarGroupLabel className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2 px-2">
+              <SidebarGroupLabel className="text-sm font-bold   text-zinc-400 mb-2 px-2">
                 {group.title}
               </SidebarGroupLabel>
             )}

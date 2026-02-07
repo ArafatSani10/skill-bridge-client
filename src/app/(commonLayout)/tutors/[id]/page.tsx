@@ -46,7 +46,7 @@ export default async function TutorDetailsPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-transparent font-sans text-zinc-900 dark:text-zinc-200 pb-20">
-      <div className="sticky top-0 z-10 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800/50">
+      <div className="sticky top-0 z-10 bg-white/80 dark:bg-transparent backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800/50">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-2 text-[12px] text-zinc-400">
           <Link href="/" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</Link>
           <ChevronRight className="size-3" />
@@ -61,9 +61,9 @@ export default async function TutorDetailsPage({ params }: PageProps) {
           <div className="col-span-12 lg:col-span-8 space-y-12">
 
             <div className="flex sm:flex-row gap-6 items-start">
-              <div className="relative size-28 md:size-36 shrink-0 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-50 shadow-sm">
+              <div className="relative size-28 md:size-36 shrink-0 rounded-sm overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-50 shadow-sm">
                 <Image
-                  src={tutor.user?.image || "https://images.unsplash.com/photo-1544717297-f1e3eec99665"}
+                  src={tutor.user?.image || "https://plus.unsplash.com/premium_photo-1738980401922-70995a1b6ade?q=80&w=1267&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
                   alt={tutor.user?.name}
                   fill
                   className="object-cover"
@@ -110,7 +110,7 @@ export default async function TutorDetailsPage({ params }: PageProps) {
                     <div key={review.id} className="p-5 rounded-sm border border-zinc-100 dark:border-zinc-800 bg-white dark:bg-transparent flex gap-4 transition-all hover:border-zinc-200">
                       <div className="relative size-12 shrink-0 rounded-sm overflow-hidden bg-zinc-100 border border-zinc-200 dark:border-zinc-800">
                         <Image
-                          src={review.student?.image || "https://avatar.iran.liara.run/public"}
+                          src={review.student?.image}
                           alt="Student"
                           fill
                           className="object-cover"
@@ -130,7 +130,7 @@ export default async function TutorDetailsPage({ params }: PageProps) {
                     </div>
                   ))
                 ) : (
-                  <p className="py-10 text-center text-sm text-zinc-400 italic border border-dashed rounded-2xl border-zinc-200">No feedback records available yet.</p>
+                  <p className="py-10 text-center text-sm text-zinc-400 italic border border-dashed rounded-sm border-zinc-200">No feedback records available yet.</p>
                 )}
               </div>
             </section>

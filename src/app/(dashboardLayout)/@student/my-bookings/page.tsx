@@ -10,12 +10,12 @@ const StudentBookingCard = ({ booking }: { booking: any }) => {
     const { tutor, slot, status } = booking;
 
     return (
-        <div className="group relative p-6 border border-zinc-200 dark:border-zinc-800 rounded-3xl bg-white dark:bg-zinc-950 shadow-sm hover:shadow-xl hover:border-blue-500/30 transition-all duration-500 overflow-hidden">
+        <div className="group relative p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-transparent shadow-sm  hover:border-blue-500/30 transition-all duration-500 overflow-hidden">
             <div className="relative flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
                 <div className="flex gap-5 items-center">
-                    <div className="relative size-16 rounded-2xl overflow-hidden ring-4 ring-zinc-50 dark:ring-zinc-900 group-hover:ring-blue-50 transition-all">
+                    <div className="relative size-16 rounded-lg overflow-hidden ring-4 ring-zinc-50 dark:ring-zinc-900 group-hover:ring-blue-50 transition-all">
                         <Image
-                            src={tutor?.user?.image || "/avatar-placeholder.png"}
+                            src={tutor?.user?.image || "https://plus.unsplash.com/premium_photo-1738980401922-70995a1b6ade?q=80&w=1267&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
                             alt={tutor?.user?.name || "Tutor"}
                             fill
                             className="object-cover"
@@ -33,7 +33,7 @@ const StudentBookingCard = ({ booking }: { booking: any }) => {
                 </div>
 
                 <div className="flex flex-wrap gap-3 md:flex-col md:items-end w-full md:w-auto">
-                    <div className="flex items-center gap-4 bg-zinc-50 dark:bg-zinc-900/50 p-3 rounded-2xl border border-zinc-100 dark:border-zinc-800">
+                    <div className="flex items-center gap-4 bg-zinc-50 dark:bg-zinc-900/50 p-3 rounded-lg border border-zinc-100 dark:border-zinc-800">
                         <div className="flex items-center gap-2 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
                             <Calendar className="size-4 text-blue-500" />
                             <span>{new Date(slot.startTime).toLocaleDateString('en-GB')}</span>
@@ -51,9 +51,9 @@ const StudentBookingCard = ({ booking }: { booking: any }) => {
             </div>
 
             <div className="mt-6 pt-5 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
-                <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${status === "CONFIRMED"
-                        ? "bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10"
-                        : "bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-500/10"
+                <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black  border ${status === "CONFIRMED"
+                    ? "bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10"
+                    : "bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-500/10"
                     }`}>
                     • {status}
                 </span>
@@ -100,20 +100,20 @@ export default function MyEnrolledSessions() {
         return (
             <div className="flex flex-col items-center justify-center min-h-[70vh] gap-4">
                 <Loader2 className="size-12 text-blue-500 animate-spin" />
-                <p className="text-zinc-500 font-bold text-sm tracking-widest uppercase animate-pulse">Loading Sessions...</p>
+                <p className="text-zinc-500 font-bold text-sm  uppercase animate-pulse">Loading Sessions...</p>
             </div>
         );
     }
 
     return (
-        <div className="max-w-7xl  py-12 px-6">
+        <div className="max-w-full  py-4 ">
             <header className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                    <div className="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-widest mb-2">
+                    <div className="flex items-center gap-2 text-blue-600 font-bold text-xs   mb-2">
                         <Sparkles className="size-4" /> Learning Hub
                     </div>
-                    <h1 className="text-4xl font-black text-zinc-900 dark:text-white tracking-tight">
-                        My Booked <span className="text-blue-600">Sessions</span>
+                    <h1 className="text-4xl font-black text-zinc-900 dark:text-white ">
+                        My Booked  Sessions
                     </h1>
                     <p className="text-zinc-500 mt-2 font-medium">Manage your learning journey and upcoming live classes.</p>
                 </div>
@@ -121,8 +121,8 @@ export default function MyEnrolledSessions() {
             </header>
 
             {bookings.length === 0 ? (
-                <div className="bg-zinc-50 dark:bg-zinc-900/50 border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-[2.5rem] py-24 text-center">
-                    <div className="bg-white dark:bg-zinc-900 size-20 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm rotate-6">
+                <div className="bg-zinc-50 dark:bg-zinc-900/50 border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-lg py-24 text-center">
+                    <div className="bg-white dark:bg-zinc-900 size-20 rounded-lg flex items-center justify-center mx-auto mb-6 shadow-sm rotate-6">
                         <Inbox className="size-10 text-zinc-300" />
                     </div>
                     <h3 className="text-zinc-900 dark:text-white font-bold text-2xl">No Active Sessions</h3>

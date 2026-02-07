@@ -1,11 +1,14 @@
+import StudentDashboard from '@/components/modules/studentPanel/StudentDashboard'
 import React from 'react'
 
-export default function StudentDashboard() {
+export default function StudentPanel() {
   return (
     <div>
       <div>
-        <h1>hey hello this is student dashboard </h1>
+        <StudentDashboard></StudentDashboard>
       </div>
     </div>
   )
 }
+
+

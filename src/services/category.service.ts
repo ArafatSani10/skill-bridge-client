@@ -1,15 +1,13 @@
-import { env } from "@/env";
-
-const API_URL = env?.API_URL;
-
 export const categoryService = {
     getAllCategories: async function () {
         try {
-            if (!API_URL) {
-                throw new Error("API_URL is missing in environment variables");
+            const PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+            if (!PUBLIC_API_URL) {
+                console.warn("API_URL is missing, falling back to localhost");
             }
 
-            const res = await fetch(`${API_URL}/api/categories`, {
+            const res = await fetch(`${PUBLIC_API_URL}/api/categories`, {
                 next: { revalidate: 3600 }
             });
 

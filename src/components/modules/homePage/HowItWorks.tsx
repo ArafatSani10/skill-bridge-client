@@ -34,7 +34,7 @@ export default function HowItWorks() {
 
                 {steps.map((step, index) => (
                     <div key={index} className="flex flex-col items-center text-center space-y-5">
-                        <div className="size-20 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-[#00baff] shadow-sm">
+                        <div className="size-20 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-[#00baff] shadow-sm">
                             <step.icon size={32} strokeWidth={1.5} />
                         </div>
                         <div className="space-y-2">

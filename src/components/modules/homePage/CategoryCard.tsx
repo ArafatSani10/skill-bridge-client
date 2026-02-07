@@ -42,7 +42,7 @@ export default function CategoryCard({ categories }: { categories: any[] }) {
         {categories.map((cat) => (
           <SwiperSlide key={cat.id}>
             <Link href={`/tutors?categoryId=${cat.id}`}>
-              <div className="group p-8 bg-white dark:bg-transparent border border-zinc-200 dark:border-zinc-800 rounded-2xl flex flex-col items-center justify-center text-center transition-all hover:border-[#00baff] hover:shadow-xl hover:shadow-[#00baff]/10 cursor-pointer">
+              <div className="group p-8 bg-white dark:bg-transparent border border-zinc-200 dark:border-zinc-800 rounded-lg flex flex-col items-center justify-center text-center transition-all hover:border-[#00baff] hover:shadow-xl hover:shadow-[#00baff]/10 cursor-pointer">
                 <div className="mb-4 p-4 rounded-full bg-zinc-50 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-[#00baff]/10 group-hover:text-[#00baff] transition-all">
                   {getIcon(cat.name)}
                 </div>

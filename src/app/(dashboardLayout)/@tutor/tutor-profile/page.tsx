@@ -80,7 +80,7 @@ export default function UpdateTutorProfile() {
       <div className="flex h-[80vh] items-center justify-center bg-transparent">
         <div className="flex flex-col items-center gap-2">
           <Loader2 className="animate-spin size-6 text-zinc-400" />
-          <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-medium">Loading Data</span>
+          <span className="text-[10px] uppercase text-zinc-500 font-medium">Loading Data</span>
         </div>
       </div>
     );

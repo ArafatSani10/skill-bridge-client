@@ -33,4 +33,11 @@ export const tutorRoutes = [
         ],
     },
 
+    {
+        title: "Account",
+        item: [
+            { title: "My Profile", url: "/tutor-auth", icon: UserCircle },
+        ],
+    },
+
 ];

@@ -190,7 +190,7 @@ export default function Availability() {
                   type="button"
                   onClick={() => copyToAll(index)}
                   disabled={!form.getFieldValue(`availability.${index}.enabled`)}
-                  className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 text-[10px] font-bold uppercase tracking-widest disabled:opacity-0 flex items-center gap-1 transition-all"
+                  className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 text-[10px] font-bold uppercase  disabled:opacity-0 flex items-center gap-1 transition-all"
                 >
                   <Copy className="size-3" /> Sync
                 </button>
